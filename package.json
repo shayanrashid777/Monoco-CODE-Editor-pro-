@@ -1,0 +1,79 @@
+{
+  "name": "@shayan777/nexus-code-editor",
+  "version": "1.0.0",
+  "description": "Windows desktop code editor powered by Monaco and Electron, with a plugin system.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shayan777/Monoco-CODE-Editor-pro.git"
+  },
+  "files": [
+    "dist",
+    "src",
+    "plugins",
+    "scripts",
+    "docs",
+    "electron"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "verify": "node scripts/verify-project.cjs",
+    "test": "node scripts/test.cjs",
+    "build": "npm run verify && node scripts/build.cjs",
+    "start": "npm run build && node scripts/serve.cjs",
+    "prepublishOnly": "npm run build",
+    "desktop": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "monaco-editor": "0.52.2"
+  },
+  "main": "electron/main.cjs",
+  "build": {
+    "appId": "com.shayan777.nexuscodeeditor",
+    "productName": "Nexus Code Editor",
+    "directories": {
+      "output": "installers",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "Nexus-Code-Editor-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "Nexus-Code-Editor-Portable-${version}.${ext}"
+    }
+  }
+}
