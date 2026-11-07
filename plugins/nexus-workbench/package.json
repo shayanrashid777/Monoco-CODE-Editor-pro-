@@ -1,0 +1,7 @@
+{
+  "name": "nexus-workbench",
+  "version": "1.0.0",
+  "description": "Line and selection tools plus a live word/char counter.",
+  "main": "extension.js",
+  "nexus": { "displayName": "Workbench" }
+}
