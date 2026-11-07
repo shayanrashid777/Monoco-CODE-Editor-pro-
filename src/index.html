@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nexus Code Editor</title>
+<link rel="icon" href="nexus-splash.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header id="toolbar">
+    <span class="brand">⚡ Nexus</span>
+    <button data-cmd="file.new">New</button>
+    <button data-cmd="file.open">Open</button>
+    <button data-cmd="file.save">Save</button>
+    <button data-cmd="palette.open">Commands</button>
+  </header>
+  <div id="tabs"></div>
+  <main id="editor"><p class="loading">Loading editor…</p></main>
+  <footer id="status">
+    <span id="pos">Ln 1, Col 1</span>
+    <span id="lang">Plain Text</span>
+    <span id="extras"></span>
+  </footer>
+</div>
+<div id="palette" hidden>
+  <div id="pbox"><input id="pq" placeholder="Type a command…" autocomplete="off"><ul id="plist"></ul></div>
+</div>
+<div id="toast" hidden></div>
+<input type="file" id="picker" hidden>
+<script src="plugins.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
